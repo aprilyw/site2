@@ -97,7 +97,7 @@ const IndexPage = () => (
       />
     </Canvas>
     <div>
-      taken on a snowy fall day, outside the John Crerar Library at the University of Chicago (give it a twirl)
+      taken outside the John Crerar Library at the University of Chicago (give it a twirl)
     </div>
   </Layout>
 )
