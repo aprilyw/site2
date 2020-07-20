@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const Journal = () => (
   <Layout>
-    <SEO title="Journal" />
+    <SEO title="journal" />
     <h1>Hi from journal</h1>
     <p>Welcome</p>
     <Link to="/">Go back to the homepage</Link>

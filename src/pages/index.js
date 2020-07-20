@@ -1,12 +1,13 @@
-//import React from "react"
-// import { Link } from "gatsby"
+// reference: https://codeworkshop.dev/blog/2020-04-03-adding-orbit-controls-to-react-three-fiber/
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import React, { Suspense, useRef, useState } from "react"
-import { Canvas, useFrame, useLoader } from "react-three-fiber"
+import { Canvas, useFrame, useThree, extend } from "react-three-fiber"
 import Model from "../components/Crerar"
 import GLTF from "../static/models/crerar.glb"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+extend({ OrbitControls });
 
 function Loading() {
   return (
@@ -16,14 +17,13 @@ function Loading() {
         attach="material"
         color="white"
         transparent
-        opacity={0.6}
-        roughness={1}
+        opacity={1}
+        roughness={0}
         metalness={0}
       />
     </mesh>
   );
 }
-
 
 const Box = props => {
   // This reference will give us direct access to the mesh so we can animate it
@@ -54,17 +54,51 @@ const Box = props => {
   )
 }
 
+const CameraControls = () => {
+  // Get a reference to the Three.js Camera, and the canvas html element.
+  // We need these to setup the OrbitControls class.
+  // https://threejs.org/docs/#examples/en/controls/OrbitControls
+
+  const {
+    camera,
+    gl: { domElement }
+  } = useThree();
+
+  // Ref to the controls, so that we can update them on every frame using useFrame
+  const controls = useRef();
+  useFrame(state => controls.current.update());
+  return (
+    <orbitControls
+      ref={controls}
+      args={[camera, domElement]}
+      enableZoom={true}
+      maxAzimuthAngle={Math.PI*2}
+      maxPolarAngle={Math.PI}
+      minAzimuthAngle={0}
+      minPolarAngle={0}
+    />
+  );
+};
+
 const IndexPage = () => (
   <Layout>
-  <Canvas>
-    <ambientLight intensity={0.2} />
-    {/* <Suspense fallback={null} >
-      <Box />
-    </Suspense> */}
+    <SEO title="home" />
+    <Canvas>
+      <ambientLight intensity={1} />
+      <CameraControls />
 
-    {/* <Model url={GLTF}/> */}
-    <Model />
-  </Canvas>
+      <Suspense fallback={Box} >
+        <Model url={GLTF}/>
+      </Suspense>
+      <pointLight
+        intensity={2}
+        position={[0, 0, 0]}
+        color="#ffffff"
+      />
+    </Canvas>
+    <div>
+      sculpture reconstructed from outside of The John Crerar Library at the University of Chicago.
+    </div>
   </Layout>
 )
 
