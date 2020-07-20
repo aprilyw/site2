@@ -9,21 +9,6 @@ import GLTF from "../static/models/crerar.glb"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 extend({ OrbitControls });
 
-function Loading() {
-  return (
-    <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
-      <sphereGeometry attach="geometry" args={[1, 16, 16]} />
-      <meshStandardMaterial
-        attach="material"
-        color="white"
-        transparent
-        opacity={1}
-        roughness={0}
-        metalness={0}
-      />
-    </mesh>
-  );
-}
 
 const Box = props => {
   // This reference will give us direct access to the mesh so we can animate it

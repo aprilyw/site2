@@ -10,7 +10,6 @@ module.exports = {
     description: `april yanli wang`,
     author: `@aprilyw`,
   },
-  pathPrefix: "/site2",
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-sass',
