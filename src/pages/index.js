@@ -97,7 +97,7 @@ const IndexPage = () => (
       />
     </Canvas>
     <div>
-      sculpture reconstructed from outside of The John Crerar Library at the University of Chicago.
+      taken on a snowy fall day, outside the John Crerar Library at the University of Chicago (give it a twirl)
     </div>
   </Layout>
 )
