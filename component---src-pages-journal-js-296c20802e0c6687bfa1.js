@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{M2i8:function(t,e,n){"use strict";n.r(e);n("q1tI");var b=n("Wbzz"),o=n("Bl7J"),c=n("vrFN"),l=n("qKvR");e.default=function(){return Object(l.b)(o.a,null,Object(l.b)(c.a,{title:"journal"}),Object(l.b)("h1",null,"Hi from journal"),Object(l.b)("p",null,"Welcome"),Object(l.b)(b.Link,{to:"/"},"Go back to the homepage"))}}}]);
+//# sourceMappingURL=component---src-pages-journal-js-296c20802e0c6687bfa1.js.map
