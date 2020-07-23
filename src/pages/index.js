@@ -44,6 +44,8 @@ const CameraControls = () => {
   // We need these to setup the OrbitControls class.
   // https://threejs.org/docs/#examples/en/controls/OrbitControls
 
+  // useFrame(() => {    group.current.rotation.y += 0.004;  });
+
   const {
     camera,
     gl: { domElement }
@@ -52,6 +54,7 @@ const CameraControls = () => {
   // Ref to the controls, so that we can update them on every frame using useFrame
   const controls = useRef();
   useFrame(state => controls.current.update());
+  
   return (
     <orbitControls
       ref={controls}
@@ -61,6 +64,7 @@ const CameraControls = () => {
       maxPolarAngle={Math.PI}
       minAzimuthAngle={0}
       minPolarAngle={0}
+      autoRotate={true}
     />
   );
 };
@@ -68,7 +72,7 @@ const CameraControls = () => {
 const IndexPage = () => (
   <Layout>
     <SEO title="home" />
-    <Canvas>
+    <Canvas style={{height: 350,}}>
       <ambientLight intensity={1} />
       <CameraControls />
 
